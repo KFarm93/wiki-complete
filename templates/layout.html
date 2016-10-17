@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<style>
+#hellouser {
+  text-align: right;
+}
+</style>
+  <head>
+    <meta charset="utf-8">
+    <title>{{title}}</title>
+  </head>
+  <body>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul class="flashes">
+        {% for message in messages %}
+          <li>{{ message }}</li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+
+    <p id="hellouser">Hello, {{session['username'] or 'there'}}!</p>
+    {% block body %}
+    <h1>Hello</h1>
+    {% endblock %}
+  </body>
+</html>
